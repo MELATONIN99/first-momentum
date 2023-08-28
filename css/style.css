@@ -39,12 +39,12 @@ body {
     font-family: 'Noto Sans KR', sans-serif;
 }
 input {
-    width: 250px;
-    height: 40px;
+    width: 500px;
+    height: 70spx;
     border: 0px;
     outline: none;
     text-align: center;
-    font-size: 25px;
+    font-size: 30px;
     border-bottom: 3px solid white;
     background: none;
     color: white;
@@ -52,7 +52,7 @@ input {
 }
 .input1 {
     width: 500px;
-    height: 32px;
+    height: 34px;
     border: 0px;
     outline: none;
     text-align: center;
@@ -68,11 +68,10 @@ input::placeholder{
 }
 .login-form button {
     width: 100px;
-    height: 44px;
+    height: 48px;
     border: 0px;
     font-size:25px;
-    border-bottom: 3px solid white;
-    background: rgba(255, 255, 255, 0.199);
+    background: rgba(147, 147, 147, 0.334);
     color: white;
     font-family: 'Noto Sans KR', sans-serif;
 }
