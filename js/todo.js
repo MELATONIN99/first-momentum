@@ -13,6 +13,7 @@ function saveToDos() {
 }
 // toDos 에 저장된 값을 Key값 "todos" 로 localStorage 에 저장
 // JSON.stringify를 사용해 문자열로 변환한다(위 코드의 출력값이 [a,b] 에서 ["a","b"] 이런식으로 변환)
+
 function deleteToDo(event) {
     const li = event.target.parentElement;
     li.remove();
@@ -33,17 +34,62 @@ function deleteToDo(event) {
 // 제외, saveToDos();로 저장하여 filter메서드로
 // 제외한 결과값을 저장함.
 
+function modiFyToDo(event) {
+    const li = event.target.parentElement;
+    const span = li.querySelector('span'); // 클릭한 버튼의 부모 요소의 span 찾기
+
+    const currentValue = span.innerText;
+    const input = document.createElement('input');
+    input.classList.add('li');
+    input.value = currentValue;
+    span.style.display = 'none'; // span 요소 숨기기
+    input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            span.innerText = input.value;
+            toDos = toDos.map((toDo) => {
+                if (toDo.id === parseInt(li.id)) {
+                    toDo.text = input.value;
+                }
+                return toDo;
+            });
+            saveToDos();
+            span.style.display = 'inline'; // 수정이 끝난 후 span 요소 표시
+            input.remove();
+
+            // 수정 버튼 다시 보이게 하기
+            const modifyButton = li.querySelector('.modify');
+            if (modifyButton) {
+                modifyButton.classList.remove('hidden');
+            }
+        }
+    });
+
+    li.appendChild(input);
+    input.focus();
+
+    // 수정 버튼 숨기기
+    const modifyButton = li.querySelector('.modify');
+    if (modifyButton) {
+        modifyButton.classList.add('hidden');
+    }
+}
+
 function paintTodo(newTodo){
     const li = document.createElement("li");
     li.id = newTodo.id;
     const button = document.createElement("button");
     button.innerText = "🗙";
+    const modifybutton = document.createElement("button");
+    modifybutton.classList.add("modify")
+    modifybutton.innerText = "📝";
     const span = document.createElement("span");
     span.innerText = newTodo.text;
 
     button.addEventListener("click", deleteToDo);
+    modifybutton.addEventListener("click", modiFyToDo);
     li.appendChild(span);
     li.appendChild(button);
+    li.appendChild(modifybutton);
     toDoList.appendChild(li);
 };
 // newTodo vaule 값 입력시 나타나는 paintTodo값 설정

@@ -99,6 +99,19 @@ li{
     background-color: rgba(66, 66, 66, 0.779);
     font-family: 'Noto Sans KR', sans-serif;
 }
+
+.li {
+     width:auto;
+    border-bottom: 3px solid white;
+    position: relative;
+    top:-2px;
+      height: 30px;
+    list-style-type: none;
+    text-align: left;
+    font-size: 16px;
+    padding-left: 50px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
 li span {
     padding-right: 50px;
 }
@@ -113,4 +126,16 @@ h2 {
 #greeting {
     font-size: 50px;
     margin: 0px;
+}
+
+.modify {
+    float: right;
+    width: 30px;
+}
+
+.edit-input {
+
+    width: 50px;
+    height: 200px;
+    font-family: 'Noto Sans KR', sans-serif;
 }
